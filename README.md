@@ -52,8 +52,8 @@ $ npm install react-router-dom
 ```
 ## Redux Toolkit
 ```
-$ npm install react-tooltip
 $ npm install @reduxjs/toolkit
+$ npm install react-redux
 ```
 ## Axios:
 ```
