@@ -46,16 +46,16 @@ import daisyui from 'daisyui';
   ],
 
 ```
-## React Router
+## Install React Router
 ```
 $ npm install react-router-dom
 ```
-## Redux Toolkit
+## Install Redux Toolkit
 ```
 $ npm install @reduxjs/toolkit
 $ npm install react-redux
 ```
-## Axios:
+## Install Axios:
 ```
 $ npm install axios
 ```
