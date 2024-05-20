@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <header>
             <div className='flex justify-center'>
-                <h1><img src={starWarsLogo} className="h-36" alt="React logo" /></h1>
+                <h1><img src={starWarsLogo} className="h-36" alt="Star Wars logo" /></h1>
             </div>
             <nav className='flex justify-center border-y-2 border-slate-300'>
                 <ul className="menu menu-horizontal px-1">

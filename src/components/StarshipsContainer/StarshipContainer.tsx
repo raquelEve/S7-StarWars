@@ -8,6 +8,8 @@ const StarshipContainer = () => {
     
     const { data: starships, error, isLoading } = useGetAllStarshipsQuery();
 
+    
+
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
    
@@ -15,7 +17,7 @@ const StarshipContainer = () => {
         <div>
             <h1>Starship List</h1>
              {starships && starships.results.map((starship) => (
-                <Starship key={starship.name} starship={starship} />
+                <Starship key={starship.url} starship={starship} />
             ))}
         </div>
     );

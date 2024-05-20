@@ -1,10 +1,13 @@
 import React from 'react';
-
+import StarshipDetailContainer from '../components/StarshipDetailContainer/StarshipDetailContainer';
+import Header from '../common/Header';
 const StarshipDetailPage = () => {
     return (
-        <div>
-            <h1>Starship detail</h1>
-        </div>
+        <>
+            <Header />
+            <main className='container text-center mx-auto'></main>
+            <StarshipDetailContainer />
+        </>
     );
 }
 

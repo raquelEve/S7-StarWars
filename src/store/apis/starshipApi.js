@@ -10,7 +10,10 @@ export const starshipApi = createApi({
         getAllStarships: builder.query({
             query: () => '/starships'
         }),
+        getStarshipById: builder.query({
+            query: (id) => `/starships/${id}`
+        }),
 
     })
 })
-export const { useGetAllStarshipsQuery, } = starshipApi
+export const { useGetAllStarshipsQuery, useGetStarshipByIdQuery } = starshipApi
