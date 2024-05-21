@@ -6,39 +6,7 @@ import { useGetAllStarshipsQuery, useGetStarshipByPageQuery } from '../../store/
 
 const StarshipContainer = () => {
 
-    // const [page, setPage] = useState(1);
 
-    // const { data: starships, error, isLoading } = useGetStarshipByPageQuery(page);
-
-    // const nextPage = () => {
-    //     if (starships.next != null) {
-    //         setPage(page + 1);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     if (starships && starships.next) {
-    //         // Fetch the next page if available
-    //         setPage(prevPage => prevPage + 1);
-
-    //     }
-    // }, []);
-
-    // if (isLoading) return <div>Loading...</div>;
-    // if (error) return <div>Error: {error.message}</div>;
-
-    // return (
-    //     <div>
-    //         <h1>Starship List</h1>
-    //         {starships && starships.results.map((starship) => (
-    //             <Starship key={starship.url} starship={starship} />
-    //         ))}
-    //         <button className='btn' onClick={nextPage}>more</button>
-    //         <br></br>
-    //     </div>
-    // );
-
-    // ------------
     const [page, setPage] = useState(1);
     const [allStarships, setAllStarships] = useState([]);
     const { data: starships, error, isLoading } = useGetStarshipByPageQuery(page);
