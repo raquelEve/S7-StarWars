@@ -12,14 +12,10 @@ const Starship = ({ starship }) => {
   
   return (
     <div className="card bg-base-100 shadow-x starshipFromList mb-4">
-        <div className="card-body">
-          <h2 className="card-title">{starship.name}</h2>
-          <p>{starship.model}</p>
-          <div className="card-actions justify-end">
-            <h2 className="card-title">{starship.name}</h2>
-          <Link to={`/detail/${starshipId}`}  className="btn btn-primary">
-              Ver más</Link>
-          </div>
+        <div className="card-body flex flex-row">
+          <h2 className="card-title w-36">{starship.name}</h2>
+          <p className='w-32'>{starship.model}</p>
+        <Link to={`/detail/${starshipId}`} className="btn btn-primary btn-sm w-28">Ver más</Link>
         </div>
       </div>
     );

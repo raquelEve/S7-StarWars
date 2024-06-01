@@ -1,11 +1,14 @@
 import './App.css'
+import { StarshipContextProvider } from './context/StarshipContext'
 import AppRouting from './routing/AppRouting'
 
 function App() {
 
   return (
     <>
-      <AppRouting />
+      <StarshipContextProvider>
+        <AppRouting />
+      </StarshipContextProvider>
     </>
   )
 }

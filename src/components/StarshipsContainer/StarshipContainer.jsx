@@ -1,64 +1,51 @@
-import { useState, useEffect, useRef } from 'react';
-import Starship from './starship/Starship';
-import { useSelector } from 'react-redux';
-import { useGetAllStarshipsQuery, useGetStarshipByPageQuery } from '../../store/apis/starshipApi';
+// StarshipContainer.js
 
+import { useEffect, useRef } from 'react';
+import Starship from './starship/Starship';
+import { useStarshipContext } from "../../context/StarshipContext";
 
 const StarshipContainer = () => {
-
-
-    const [page, setPage] = useState(1);
-    const [allStarships, setAllStarships] = useState([]);
-    const { data: starships, error, isLoading } = useGetStarshipByPageQuery(page);
+    const { handleNextPage, allStarships, isLoading, error, hasNextPage } = useStarshipContext();
     const observer = useRef();
     const lastStarshipElementRef = useRef();
 
     useEffect(() => {
-        if (starships && starships.results) {
-            setAllStarships(prevStarships => [...prevStarships, ...starships.results]);
-        }
-    }, [starships]);
-
-    const nextPage = () => {
-        if (starships && starships.next) {
-            setPage(prevPage => prevPage + 1);
-        }
-    };
-
-    useEffect(() => {
-        if (isLoading) return;
-        if (observer.current) observer.current.disconnect();
-
         observer.current = new IntersectionObserver(entries => {
-            if (entries[0].isIntersecting && starships && starships.next) {
-                nextPage();
+            if (entries[0].isIntersecting && !isLoading && hasNextPage) {
+                handleNextPage();
             }
         });
 
+        return () => {
+            if (observer.current) {
+                observer.current.disconnect();
+            }
+        };
+    }, [handleNextPage, isLoading, hasNextPage]);
+
+    useEffect(() => {
         if (lastStarshipElementRef.current) {
             observer.current.observe(lastStarshipElementRef.current);
         }
-    }, [isLoading]);
 
-    if (isLoading && page === 1) return <div>Loading...</div>;
-    if (error) return <div>Error: {error.message}</div>;
+        return () => {
+            if (lastStarshipElementRef.current) {
+                observer.current.unobserve(lastStarshipElementRef.current);
+            }
+        };
+    }, [allStarships]);
 
     return (
-        <div>
-            <h1>Starships</h1>
+        <div className='mt-8'>
             {allStarships.map((starship, index) => (
                 <div key={index} ref={index === allStarships.length - 1 ? lastStarshipElementRef : null}>
                     <Starship key={starship.url} starship={starship} />
-                    {/* <h2>{starship.name}</h2> */}
-                    {/* <p>{starship.model}</p> */}
                 </div>
             ))}
             {isLoading && <div>Loading...</div>}
-            <button className='btn btn-primary' onClick={nextPage} disabled={!starships.next}> more</button>
-            <br></br>
+
         </div>
     );
 };
-
 
 export default StarshipContainer;
