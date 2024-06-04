@@ -7,7 +7,6 @@ const StarshipsListPage = () => {
 
     return (
         <>
-            <Header />
             <main className='container text-center mx-auto'>
                 <StarshipContainer />
             </main>

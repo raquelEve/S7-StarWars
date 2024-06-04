@@ -4,7 +4,6 @@ import Header from '../common/Header';
 const StarshipDetailPage = () => {
     return (
         <>
-            <Header />
             <main className='container text-center mx-auto'></main>
             <StarshipDetailContainer />
         </>

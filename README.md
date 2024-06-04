@@ -59,3 +59,7 @@ $ npm install react-redux
 ```
 $ npm install axios
 ```
+## install firebase
+```
+$ npm install firebase
+```

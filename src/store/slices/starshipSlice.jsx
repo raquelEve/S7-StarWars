@@ -6,12 +6,12 @@ export const starshipSlice = createSlice({
         starshipList: []
     },
     reducers: {
-        setStarShipsList: (state, action) => {
-            console.log("action", action);
-            state.starshipsList = action.payload.starshipsList;
+        setStarShips: (state, action) => {
+            // state.starshipsList = action.payload.starshipsList;
+            state.starshipsList = action.payload;
         }
     }
 });
 
-export const { setStarShipsList } = starshipSlice.actions;
+export const { setStarShips } = starshipSlice.actions;
 export default starshipSlice.reducer;
